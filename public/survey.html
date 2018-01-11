@@ -146,6 +146,7 @@
                 //Listener for the Submit button--------------
                 $("#addBtn").on("click", function(event) {
                     event.preventDefault();
+
                     var newFriend = {
                         name: $("#userName").val().trim(),
                         photo: $("#photo").val().trim(),
@@ -174,10 +175,10 @@
 
 
                             // Clear the form when submitting
-                            // $("#reserve-name").val("");
-                            // $("#reserve-phone").val("");
-                            // $("#reserve-email").val("");
-                            // $("#reserve-unique-id").val("");
+                            $("#userName").val("");
+                            $("#photo").val("");
+                            $("#q1").val("");
+                            $("#q2").val("");
 
                         }
                     );
