@@ -7,6 +7,10 @@ module.exports = function(app) {
     });
     // A POST routes /api/new. This will be used to handle incoming survey results. 
     app.post("/api/new", function(req, res) {
+        //push the newFriend into the friends array for future users to find.
+        friends.push(req.body);
+        //display the newFriend as a JSON in the console.
+        res.json(req.body);
         // var newFriend = req.body;
         // newFriend.routeName = newFriend.name.replace(/\s+/g, "");
         // console.log('newFriend: ' + newFriend);
@@ -43,10 +47,7 @@ module.exports = function(app) {
         // $('#newBestiePic').html('<img src="' + newBestie.photo + '" height="42" width="42">');
 
 
-        // //push the newFriend into the friends array for future users to find.
-        // friends.push(newFriend);
-        // //display the newFriend as a JSON in the console.
-        // res.json(newFriend);
+
 
     });
 

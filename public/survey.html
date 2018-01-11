@@ -162,12 +162,28 @@
                             $("#q10").val()
                         ]
                     };
-                    // 
-                    $.post("/api/new", newFriend)
-                        .done(function(data) {
-                            console.log(data);
-                            alert("Adding you as a friend...");
-                        });
+                    console.log(newFriend);
+
+                    $.post("/api/new", newFriend,
+                        function() {
+
+                            console.log('Adding you as a new Friend');
+
+
+
+
+
+                            // Clear the form when submitting
+                            // $("#reserve-name").val("");
+                            // $("#reserve-phone").val("");
+                            // $("#reserve-email").val("");
+                            // $("#reserve-unique-id").val("");
+
+                        }
+                    );
+
+
+
                 });
             </script>
 
@@ -207,7 +223,7 @@
                 </div>
             </footer>
     </div>
-    <script type="text/javascript" src="../routing/apiRoutes.js"></script>
+    <!-- <script type="text/javascript" src="../routing/apiRoutes.js"></script> -->
 </body>
 
 </html>
