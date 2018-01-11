@@ -31,7 +31,7 @@
             <h3>Question 1</h3>
             <h4>How is your credit?</h4>
             <select id='q1' class="dropdown">
-                    <option selected>Select Your Answer:</option>
+                    <option selected>*(REQUIRED)</option>
                     <option value="1">Umm, let's talk about something else.</option>
                     <option value="2">It could stand some of improvement.</option>
                     <option value="3">Meh, decent.</option>
@@ -42,7 +42,7 @@
             <h3>Question 2</h3>
             <h4>Are you into physical fitness?</h4>
             <select id='q2' class="custom-select">
-                    <option selected>Select Your Answer:</option>
+                    <option selected>*(REQUIRED)</option>
                     <option value="1">Nope, never touch the stuff.</option>
                     <option value="2">I've heard of it.</option>
                     <option value="3">I excercise on and off.</option>
@@ -53,7 +53,7 @@
             <h3>Question 3</h3>
             <h4>Do you imbibe alcohol?</h4>
             <select id='q3' class="custom-select">
-                    <option selected>Select Your Answer:</option>
+                    <option selected>*(REQUIRED)</option>
                     <option value="1">Absolutely not!</option>
                     <option value="2">Maybe a sip or two on special occasions.</option>
                     <option value="3">Totally ambivalent.</option>
@@ -64,7 +64,7 @@
             <h3>Question 4</h3>
             <h4>Do you consider yourself well-educated?</h4>
             <select id='q4' class="custom-select">
-                    <option selected>Select Your Answer:</option>
+                    <option selected>*(REQUIRED)</option>
                     <option value="1">Cash me ousside, how bow dat!</option>
                     <option value="2">High School was enough for me.</option>
                     <option value="3">Some college or well-read.</option>
@@ -75,7 +75,7 @@
             <h3>Question 5</h3>
             <h4>Art or Science?</h4>
             <select id='q5' class="custom-select">
-                    <option selected>Select Your Answer:</option>
+                    <option selected>*(REQUIRED)</option>
                     <option value="1">Art is my life.</option>
                     <option value="2">Science is nice but art is what makes life important. </option>
                     <option value="3">The two are inexplicably intertwined.</option>
@@ -86,7 +86,7 @@
             <h3>Question 6</h3>
             <h4>Rock and Roll, or Hip-Hop?</h4>
             <select id='q6' class="custom-select">
-                    <option selected>Select Your Answer:</option>
+                    <option selected>*(REQUIRED)</option>
                     <option value="1">Rock and Roll will never die!</option>
                     <option value="2">I prefer rock, but other stuff can be cool.</option>
                     <option value="3">I like all kinds of music (I can't make  decisions for myself)</option>
@@ -97,7 +97,7 @@
             <h3>Question 7</h3>
             <h4>Athiest or Religious:</h4>
             <select id='q7' class="custom-select">
-                    <option selected>Select Your Answer:</option>
+                    <option selected>*(REQUIRED)</option>
                     <option value="1">Religious people are big fat jerks!</option>
                     <option value="2">I'll believe it if I see it.</option>
                     <option value="3">That's a tough one.</option>
@@ -108,7 +108,7 @@
             <h3>Question 8</h3>
             <h4>Politically Liberal or Politically Conservative?</h4>
             <select id='q8' class="custom-select">
-                    <option selected>Select Your Answer:</option>
+                    <option selected>*(REQUIRED)</option>
                     <option value="1">I have a tattoo of Gloria Steinem on my left arm.</option>
                     <option value="2">I usually vote Democrat.</option>
                     <option value="3">They're all crooks, the lot of them.</option>
@@ -119,7 +119,7 @@
             <h3>Question 9</h3>
             <h4>One-on-one time, or Party-time?</h4>
             <select id='q9' class="custom-select">
-                    <option selected>Select Your Answer:</option>
+                    <option selected>*(REQUIRED)</option>
                     <option value="1">Three's a crowd.</option>
                     <option value="2">We can socialize on holidays.</option>
                     <option value="3">Parties on the weekend are cool, but that's about it.</option>
@@ -130,7 +130,7 @@
             <h3>Question 10</h3>
             <h4>Out-doors person, or Indoors person?</h4>
             <select id='q10' class="custom-select">
-                    <option selected>Select Your Answer:</option>
+                    <option selected>*(REQUIRED)</option>
                     <option value="1">I'm taking this survey from base-camp before we push to the summit.</option>
                     <option value="2">I go camping every chance I get.</option>
                     <option value="3">I'm game but let's not get crazy.</option>
@@ -166,16 +166,28 @@
                     console.log(newFriend);
 
                     $.post("/api/new", newFriend,
-                        function() {
+                            function() {
 
-                            // Clear the form when submitting
-                            $("#userName").val("");
-                            $("#photo").val("");
-                            $("#q1").val("");
-                            $("#q2").val("");
+                                // Clear the form when submitting
+                                $("#userName").val("");
+                                $("#photo").val("");
+                                $("#q1").val("*(REQUIRED)");
+                                $("#q2").val("*(REQUIRED)");
+                                $("#q3").val("*(REQUIRED)");
+                                $("#q4").val("*(REQUIRED)");
+                                $("#q5").val("*(REQUIRED)");
+                                $("#q6").val("*(REQUIRED)");
+                                $("#q7").val("*(REQUIRED)");
+                                $("#q8").val("*(REQUIRED)");
+                                $("#q9").val("*(REQUIRED)");
+                                $("#q10").val("*(REQUIRED)");
 
-                        }
-                    );
+                            })
+                        .then(function(newBestie) {
+                            // Display the newBestie as a modal. display both the name and picture of the closest match.
+                            $('#newBestieName').html(newBestie.name);
+                            $('#newBestiePic').html('<img src="' + newBestie.photo + '" height="42" width="42">');
+                        });
 
 
 

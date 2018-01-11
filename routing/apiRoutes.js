@@ -10,7 +10,7 @@ module.exports = function(app) {
     app.post("/api/new", function(req, res) {
 
         //display the newFriend as a JSON in the console.
-        res.json(req.body);
+        // res.json(req.body);
 
 
         //This route will also be used to handle the compatibility logic.
@@ -21,7 +21,7 @@ module.exports = function(app) {
             var existFriendsScores = friends[i].scores;
             console.log(existFriendsScores);
             // 	for each item in the friends[i].score array {
-            for (var j = 0; j < 9; j++) {
+            for (var j = 0; j < existFriendsScores.length; j++) {
                 // 	Subtract that score from corresponding score in the newFriend.score array.
                 // 	Return the absolute value of that difference
                 // 	Add the absolute values of all of those differences together together to get the total variance for this item in the friends array.
@@ -46,9 +46,8 @@ module.exports = function(app) {
         // That index is the index from the "friends" array of the newBestie.
         var newBestie = friends[index];
         console.log(newBestie);
-        // Display the newBestie as a modal. display both the name and picture of the closest match.
-        // $('#newBestieName').html(newBestie.name);
-        // $('#newBestiePic').html('<img src="' + newBestie.photo + '" height="42" width="42">');
+        res.json(newBestie);
+
 
         //-----------------------------------------------------------
         //-------------------------------------------------------------
