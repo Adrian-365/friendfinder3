@@ -8,18 +8,11 @@ module.exports = function(app) {
 
     // A POST routes /api/new. This will be used to handle incoming survey results. 
     app.post("/api/new", function(req, res) {
-        //push the newFriend into the friends array for future users to find.
-        // friends.push(req.body);
+
         //display the newFriend as a JSON in the console.
         res.json(req.body);
 
-        //----------------------------------------------------------------------------
-        //-------------------------------------------------------------------------------
-        var newAdd = (req.body);
-        // newAdd.routeName = newAdd.name.replace(/\s+/g, "");
-        // console.log(newAdd);
-        // console.log(req.body);
-        console.log(req.body['scores[]']);
+
         //This route will also be used to handle the compatibility logic.
         var friendsCompare = [];
         // for each item in the "friends" array,{
@@ -34,7 +27,7 @@ module.exports = function(app) {
                 // 	Add the absolute values of all of those differences together together to get the total variance for this item in the friends array.
                 //  Math.abs() returns the absolute value
 
-                sum = sum + Math.abs(parseInt(req.body['scores[]'][j]) - parseInt(existFriendsScores[j]));
+                sum = sum + Math.abs(parseInt(req.body.scores[j]) - parseInt(existFriendsScores[j]));
             };
             // push the total variance for this item of the friends array into a new "friendsCopmare" array so that we can capture the variance for each friend.
             friendsCompare.push(sum);
@@ -54,13 +47,18 @@ module.exports = function(app) {
         var newBestie = friends[index];
         console.log(newBestie);
         // Display the newBestie as a modal. display both the name and picture of the closest match.
-        $('#newBestieName').html(newBestie.name);
-        $('#newBestiePic').html('<img src="' + newBestie.photo + '" height="42" width="42">');
+        // $('#newBestieName').html(newBestie.name);
+        // $('#newBestiePic').html('<img src="' + newBestie.photo + '" height="42" width="42">');
 
         //-----------------------------------------------------------
         //-------------------------------------------------------------
+        //push the newFriend into the friends array for future users to find.
+        friends.push(req.body);
 
 
     });
+
+
+
 
 };

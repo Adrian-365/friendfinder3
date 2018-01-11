@@ -8,8 +8,10 @@ var app = express();
 //set up the port, deployable to heroku etc.
 var PORT = process.env.PORT || 3000;
 // set up middleware
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 //initialize routes
 // app.use(routes);
